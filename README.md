@@ -1,6 +1,8 @@
 # Smart POCT Dot-Blot Reader for Toxoplasmosis: AI-Enabled Detection of Anti-GRA7 Antibodies
 
-Code, data, trained models and results accompanying the manuscript *Development and Proof-of-Concept Validation of an Image-Segmentation and Machine-Learning System for Automated Interpretation of Anti-GRA7 Dot-Blot Assays in Toxoplasma gondii Serodiagnosis* (manuscript and supplementary material are distributed separately).
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24124978.svg)](https://doi.org/10.5281/zenodo.24124978)
+
+Code, data, trained models and results accompanying the manuscript *An AI-Enabled Imaging Device for Automated Interpretation of Anti-GRA7 Dot-Blot Assays in Toxoplasma gondii Serodiagnosis: Proof-of-Concept Development and Validation* (manuscript and supplementary material are distributed separately).
 
 The system has five parts, each in its own folder:
 
@@ -147,8 +149,8 @@ Affiliation:
 
 ## License and citation
 
-**License:** to be chosen by the authors before publication (e.g. MIT for code, CC BY 4.0 for data and figures); add a `LICENSE` file. Until then all rights are reserved.
-
-**Citation:** the reference and DOI of the manuscript, and the Zenodo DOI of the archived release, will be added here.
+* **Code** (`*.py`, `*.ipynb`, `*.ui`): MIT License, see [`LICENSE`](LICENSE).
+* **Data, figures, tables, trained models and documentation**: CC BY 4.0, see [`LICENSE-DATA.md`](LICENSE-DATA.md). That file also lists third-party terms: `ultralytics` (YOLO) is AGPL-3.0, which applies to anyone who redistributes or deploys derivative works.
+* **Citation:** see [`CITATION.cff`](CITATION.cff) (GitHub shows a "Cite this repository" button). Please cite the manuscript *An AI-Enabled Imaging Device for Automated Interpretation of Anti-GRA7 Dot-Blot Assays in Toxoplasma gondii Serodiagnosis: Proof-of-Concept Development and Validation* (Suprianto D, Fitri LE, Sabarudin A, Mahmudy WF, Winaris N, Rahmawati HR, Fahmi AL; 2026, in preparation) and this repository. Archived release: [10.5281/zenodo.24124978](https://doi.org/10.5281/zenodo.24124978). The journal reference will be added after acceptance. Note that the Zenodo archive is built from the GitHub source archive, which contains Git LFS files (`*.pt`, `*.pkl`, `*.skp`) only as pointer stubs; the complete model files are in this repository and, where noted on the Zenodo record, as additional files of the record.
 
 **Disclaimer.** Research prototype. It is not a validated medical device and must not be used for clinical decisions.

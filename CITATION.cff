@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+message: "If you use this software, data or models, please cite the accompanying manuscript (preferred-citation) and this repository."
+title: "Smart POCT Dot-Blot Reader for Toxoplasmosis: AI-Enabled Detection of Anti-GRA7 Antibodies"
+type: software
+version: "1.0.0"
+date-released: "2026-11-11"
+doi: 10.5281/zenodo.24124978
+authors:
+  - family-names: Suprianto
+    given-names: Dodit
+    email: dodit.suprianto@polinema.ac.id
+    affiliation: "Department of Electrical Engineering, Politeknik Negeri Malang, Malang, Indonesia; Doctoral Program in Medical Science and ATOM Research Group, Faculty of Medicine, Universitas Brawijaya, Malang, Indonesia"
+repository-code: "https://github.com/doditsuprianto/Smart-POCT-Dot-Blot-Reader-for-Toxoplasmosis-AI-Enabled-Detection-of-Anti-GRA7-Antibodies"
+license: MIT
+abstract: >-
+  Code, data, trained models and results for an AI-enabled point-of-care reader of anti-GRA7 antigen-capture dot-blot
+  assays for Toxoplasma gondii serodiagnosis: YOLOv8n-seg spot detection, artefact-controlled quantification of grayscale
+  spot crops, machine-learning and CNN classifiers, and a desktop diagnosis application. Research prototype, not a
+  validated medical device. Data and figures are released under CC BY 4.0 (see LICENSE-DATA.md).
+keywords:
+  - toxoplasmosis
+  - Toxoplasma gondii
+  - GRA7
+  - dot-blot
+  - point-of-care testing
+  - serodiagnosis
+  - image segmentation
+  - YOLOv8
+  - machine learning
+  - convolutional neural network
+preferred-citation:
+  type: unpublished
+  title: "An AI-Enabled Imaging Device for Automated Interpretation of Anti-GRA7 Dot-Blot Assays in Toxoplasma gondii Serodiagnosis: Proof-of-Concept Development and Validation"
+  year: 2026
+  authors:
+    - family-names: Suprianto
+      given-names: Dodit
+    - family-names: Fitri
+      given-names: Loeki Enggar
+    - family-names: Sabarudin
+      given-names: Akhmad
+    - family-names: Mahmudy
+      given-names: Wayan Firdaus
+    - family-names: Winaris
+      given-names: Nuning
+    - family-names: Rahmawati
+      given-names: Hanifa Rizky
+    - family-names: Fahmi
+      given-names: Ahmad Lutfi
+  notes: "Manuscript in preparation; replace this block with the journal reference and DOI after publication."
