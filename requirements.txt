@@ -1,0 +1,25 @@
+# Python packages for the notebooks and scripts in this repository.
+# Versions actually recorded in the manuscript runs:
+#   ML/CNN notebook (Results/run_manifest.json): numpy 2.1.3, pandas 2.2.3, scikit-learn 1.6.1, xgboost 3.4.1, lightgbm 4.6.0,
+#                                                scikit-image 0.25.2, torch 2.11.0, torchvision 0.26.0
+#   YOLO notebook (yolo_results/dotblot-yolov8n-seg_report.json): ultralytics 8.4.208, torch 2.14.1
+# Lower bounds are given so that a current environment can be used; pin exactly if bit-level reproduction is required.
+numpy>=2.1
+pandas>=2.2
+scipy>=1.13
+scikit-learn>=1.6
+scikit-image>=0.25
+xgboost>=3.0
+lightgbm>=4.6
+matplotlib>=3.9
+seaborn>=0.13
+Pillow>=10.0
+opencv-python-headless>=4.9
+tqdm>=4.66
+joblib>=1.4
+torch>=2.11
+torchvision>=0.26
+ultralytics==8.4.208
+# to run the notebooks outside Colab
+jupyterlab>=4.0
+nbconvert>=7.0

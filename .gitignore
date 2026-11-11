@@ -1,0 +1,28 @@
+# ---- large raw data: host on Zenodo / Drive (see README, section "Data") ----
+DotBlot YOLO Segmentation/dataset/train/images/
+DotBlot YOLO Segmentation/dataset/validation/images/
+DotBlot YOLO Segmentation/dataset/test/*.png
+DotBlot YOLO Segmentation/dataset/test/*.jpg
+# ---- 60 cross-validation CNN checkpoints (~0.9 GB, re-created by the notebook) ----
+Dot-Blot Model ML CNN/Results/models/
+
+# ---- outputs of re-runs (never mixed with the published results) ----
+Dot-Blot Model ML CNN/Results_rerun/
+DotBlot YOLO Segmentation/yolo_results_rerun/
+DotBlot YOLO Segmentation/figures_rerun/
+Supplementary_Code/output/
+Toxoplasmosis_Diagnosis_Device/output/
+
+# ---- Python / Jupyter / OS ----
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+*.bkp
+*.dtmp

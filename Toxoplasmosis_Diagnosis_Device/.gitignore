@@ -1,0 +1,6 @@
+# captured crops, labelled data, raw photographs and the diagnosis log (patient-related -> never commit)
+output/
+__pycache__/
+*.pyc
+.venv/
+.idea/

@@ -1,0 +1,171 @@
+{
+  "ultralytics": "8.4.208",
+  "torch": "2.14.1+cu130",
+  "hyperparameters": {
+    "model": "yolov8n-seg.pt",
+    "epochs": 50,
+    "imgsz": 1920,
+    "batch": 4,
+    "workers": 1,
+    "optimizer": "AdamW",
+    "lr0": 0.0005,
+    "lrf": 0.01,
+    "momentum": 0.937,
+    "weight_decay": 0.0001,
+    "warmup_epochs": 5,
+    "cos_lr": true,
+    "amp": false,
+    "patience": 100,
+    "seed": 0,
+    "deterministic": true,
+    "mosaic": 1.0,
+    "close_mosaic": 10,
+    "hsv_h": 0.015,
+    "hsv_s": 0.7,
+    "hsv_v": 0.4,
+    "translate": 0.1,
+    "scale": 0.5,
+    "fliplr": 0.5,
+    "erasing": 0.4
+  },
+  "dataset": {
+    "images": {
+      "train": 85,
+      "val": 39
+    },
+    "annotated_spots": {
+      "train": 1090,
+      "val": 525
+    },
+    "background_images": {
+      "train": 0,
+      "val": 0
+    },
+    "spots_per_image_mean": {
+      "train": 12.82,
+      "val": 13.46
+    },
+    "image_share_%": {
+      "train": 68.5,
+      "val": 31.5
+    }
+  },
+  "corrections": {},
+  "validation_best": {
+    "precision": {
+      "Box": 0.965,
+      "Mask": 0.963
+    },
+    "recall": {
+      "Box": 0.935,
+      "Mask": 0.933
+    },
+    "mAP50": {
+      "Box": 0.987,
+      "Mask": 0.979
+    },
+    "mAP50-95": {
+      "Box": 0.676,
+      "Mask": 0.663
+    }
+  },
+  "validation_last": {
+    "precision": {
+      "Box": 0.947,
+      "Mask": 0.954
+    },
+    "recall": {
+      "Box": 0.96,
+      "Mask": 0.956
+    },
+    "mAP50": {
+      "Box": 0.986,
+      "Mask": 0.983
+    },
+    "mAP50-95": {
+      "Box": 0.664,
+      "Mask": 0.655
+    }
+  },
+  "mask_F1_peak_best": [
+    0.949,
+    0.528
+  ],
+  "mask_F1_peak_last": [
+    0.955,
+    0.464
+  ],
+  "spot_level": [
+    {
+      "conf": 0.25,
+      "images": 39,
+      "gt_spots": 525,
+      "TP": 512,
+      "FP": 55,
+      "FN": 13,
+      "precision": 0.903,
+      "recall": 0.975,
+      "F1": 0.938,
+      "images_without_error": 10
+    },
+    {
+      "conf": 0.5,
+      "images": 39,
+      "gt_spots": 525,
+      "TP": 502,
+      "FP": 22,
+      "FN": 23,
+      "precision": 0.958,
+      "recall": 0.956,
+      "F1": 0.957,
+      "images_without_error": 17
+    },
+    {
+      "conf": 0.75,
+      "images": 39,
+      "gt_spots": 525,
+      "TP": 421,
+      "FP": 3,
+      "FN": 104,
+      "precision": 0.993,
+      "recall": 0.802,
+      "F1": 0.887,
+      "images_without_error": 3
+    }
+  ],
+  "imgsz_sensitivity": [
+    {
+      "imgsz": 640,
+      "box_P": 0.613,
+      "box_R": 0.507,
+      "box_mAP50": 0.48,
+      "box_mAP50_95": 0.092,
+      "mask_P": 0.643,
+      "mask_R": 0.507,
+      "mask_mAP50": 0.504,
+      "mask_mAP50_95": 0.106
+    },
+    {
+      "imgsz": 1280,
+      "box_P": 0.971,
+      "box_R": 0.946,
+      "box_mAP50": 0.973,
+      "box_mAP50_95": 0.659,
+      "mask_P": 0.973,
+      "mask_R": 0.948,
+      "mask_mAP50": 0.973,
+      "mask_mAP50_95": 0.64
+    },
+    {
+      "imgsz": 1920,
+      "box_P": 0.965,
+      "box_R": 0.935,
+      "box_mAP50": 0.987,
+      "box_mAP50_95": 0.676,
+      "mask_P": 0.963,
+      "mask_R": 0.933,
+      "mask_mAP50": 0.979,
+      "mask_mAP50_95": 0.663
+    }
+  ]
+}

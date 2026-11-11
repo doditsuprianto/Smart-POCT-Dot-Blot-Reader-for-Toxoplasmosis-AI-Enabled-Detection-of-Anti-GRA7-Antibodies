@@ -1,0 +1,13 @@
+# Toxoplasmosis_Diagnosis_Device - tested with Python 3.12 (Windows). Install:  pip install -r requirements.txt
+PyQt5==5.15.11
+opencv-python==4.12.0.88
+numpy==2.2.6
+ultralytics==8.3.233
+# scikit-learn must match the version that created model/dotblot_q4_mlp.joblib (or re-create it with train_diagnosis_model.py)
+scikit-learn==1.7.2
+scikit-image>=0.25
+scipy
+pandas
+matplotlib
+joblib
+pillow

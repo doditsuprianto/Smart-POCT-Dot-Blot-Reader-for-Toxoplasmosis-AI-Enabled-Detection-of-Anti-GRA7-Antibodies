@@ -1,0 +1,8 @@
+# Git LFS (run `git lfs install` once, before the first commit)
+*.pt   filter=lfs diff=lfs merge=lfs -text
+*.pkl  filter=lfs diff=lfs merge=lfs -text
+*.skp  filter=lfs diff=lfs merge=lfs -text
+*.zip  filter=lfs diff=lfs merge=lfs -text
+
+# Notebooks: keep diffs readable
+*.ipynb -diff
