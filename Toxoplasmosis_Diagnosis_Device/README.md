@@ -43,7 +43,7 @@ Toxoplasmosis_Diagnosis_Device/
   output/                      created at run time (git-ignored)
 ```
 
-Sibling folders of the repository: `../Body Case/` (SketchUp models of the enclosure), `../DotBlot YOLO Segmentation/` (segmentation training; the manuscript weights are in `yolo_results/dotblot-yolov8n-seg/weights/best.pt`), `../Dot-Blot Model ML CNN/` (classification study and the dataset used for training).
+Sibling folders of the repository: `../Body_Case/` (SketchUp models of the enclosure), `../Dot_Blot_YOLO_Segmentation/` (segmentation training; the manuscript weights are in `yolo_results/dotblot-yolov8n-seg/weights/best.pt`), `../Dot_Blot_Model_ML_CNN/` (classification study and the dataset used for training).
 
 ## Installation
 
@@ -116,7 +116,7 @@ Interpretation: with the present training data, one raw spot does not carry enou
 ### Re-training
 
 ```bash
-python train_diagnosis_model.py            # defaults: ../Dot-Blot Model ML CNN/Dataset  ->  model/dotblot_q4_mlp.joblib
+python train_diagnosis_model.py            # defaults: ../Dot_Blot_Model_ML_CNN/Dataset  ->  model/dotblot_q4_mlp.joblib
 python train_diagnosis_model.py --dataset <folder with Grayscale_Test 1/2/3> --lux 250 --repeats 5 --n-perm 100
 ```
 

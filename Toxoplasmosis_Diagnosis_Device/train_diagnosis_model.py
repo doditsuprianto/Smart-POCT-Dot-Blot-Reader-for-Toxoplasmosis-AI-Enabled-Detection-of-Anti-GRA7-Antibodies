@@ -12,7 +12,7 @@ train_diagnosis_model.py
 ========================
 Builds the classifier used by the diagnosis application.
 
-    python train_diagnosis_model.py          (defaults: ../Dot-Blot Model ML CNN/Dataset -> model/dotblot_q4_mlp.joblib)
+    python train_diagnosis_model.py          (defaults: ../Dot_Blot_Model_ML_CNN/Dataset -> model/dotblot_q4_mlp.joblib)
 
 Design (chosen from the classification study, section "ML models"):
   * input      : grayscale crop of one spot at 250 lux (1 image = 1 decision)
@@ -197,7 +197,7 @@ def spot_ci(df, n=1000, seed=0):
 def main():
     ap = argparse.ArgumentParser()
     here = os.path.dirname(os.path.abspath(__file__))
-    ap.add_argument("--dataset", default=os.path.join(here, "..", "Dot-Blot Model ML CNN", "Dataset"),
+    ap.add_argument("--dataset", default=os.path.join(here, "..", "Dot_Blot_Model_ML_CNN", "Dataset"),
                     help="folder containing Grayscale_Test 1/2/3 (default: sibling folder of this repository)")
     ap.add_argument("--out", default=os.path.join(here, "model", "dotblot_q4_mlp.joblib"))
     ap.add_argument("--lux", type=int, default=250)

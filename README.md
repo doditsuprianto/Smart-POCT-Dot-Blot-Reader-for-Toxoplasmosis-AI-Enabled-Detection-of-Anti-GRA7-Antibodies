@@ -1,14 +1,14 @@
-# Anti-GRA7 dot-blot reader for *Toxoplasma gondii* serodiagnosis — code, data and models
+# Smart POCT Dot-Blot Reader for Toxoplasmosis: AI-Enabled Detection of Anti-GRA7 Antibodies
 
-Code, notebooks and results accompanying the manuscript *Development and Proof-of-Concept Validation of an Image-Segmentation and Machine-Learning System for Automated Interpretation of Anti-GRA7 Dot-Blot Assays in Toxoplasma gondii Serodiagnosis* (manuscript and supplementary material are distributed separately).
+Code, data, trained models and results accompanying the manuscript *Development and Proof-of-Concept Validation of an Image-Segmentation and Machine-Learning System for Automated Interpretation of Anti-GRA7 Dot-Blot Assays in Toxoplasma gondii Serodiagnosis* (manuscript and supplementary material are distributed separately).
 
-The system has four parts, each in its own folder:
+The system has five parts, each in its own folder:
 
 | Folder | Content | Main entry point |
 |---|---|---|
-| `Body Case/` | SketchUp (`.skp`) models of the camera/reader enclosure (body, top cover, panel cover, object slider, assemblies) | open in SketchUp |
-| `DotBlot YOLO Segmentation/` | YOLOv8n-seg spot detection: audited dataset, training, validation, spot-level metrics, cropping; published weights and results | `Segmentation_Dotblot_YOLOv8_Audited.ipynb` |
-| `Dot-Blot Model ML CNN/` | Artefact-controlled classification from grayscale crops: quantification families (Q1–Q6) + 9 ML algorithms (pipeline A) and 5 CNNs (pipeline B), controls, permutation tests, ML-vs-CNN comparison | `Dot-Blot Model.ipynb` |
+| `Body_Case/` | SketchUp (`.skp`) models of the camera/reader enclosure (body, top cover, panel cover, object slider, assemblies) | open in SketchUp |
+| `Dot_Blot_YOLO_Segmentation/` | YOLOv8n-seg spot detection: audited dataset, training, validation, spot-level metrics, cropping; published weights and results | `Segmentation_Dotblot_YOLOv8_Audited.ipynb` |
+| `Dot_Blot_Model_ML_CNN/` | Artefact-controlled classification from grayscale crops: quantification families (Q1–Q6) + 9 ML algorithms (pipeline A) and 5 CNNs (pipeline B), controls, permutation tests, ML-vs-CNN comparison | `Dot-Blot Model.ipynb` |
 | `Toxoplasmosis_Diagnosis_Device/` | Desktop application of the point-of-care reader (camera, YOLO detection, cropping, classification, labelling and raw-capture tabs); has its own README | `dotblot_diagnosis_app.py` |
 | `Supplementary_Code/` | Stand-alone scripts for the supplementary analyses (artefact diagnostics, membrane-group sensitivity, selection-aware permutation, mask-geometry control, manuscript figures) | see table below |
 
@@ -17,14 +17,14 @@ The segmentation and auto-cropping stage produces the grayscale crops; the class
 ## Repository layout
 
 ```
-Body Case/                      *.skp
-DotBlot YOLO Segmentation/
+Body_Case/                      *.skp
+Dot_Blot_YOLO_Segmentation/
   Segmentation_Dotblot_YOLOv8_Audited.ipynb   audited dataset -> training -> validation -> cropping
   Figure5_Segmentation_Example.ipynb           segmentation example figure (ground truth vs prediction)
   dataset/{train,validation,test}/          YOLO-segmentation format (images/, labels/); see "Data"
   yolo_results/                             results of the manuscript run (weights/best.pt, metrics, reports)
   figures/
-Dot-Blot Model ML CNN/
+Dot_Blot_Model_ML_CNN/
   Dot-Blot Model.ipynb                      full classification pipeline (Colab or local)
   Dataset/Grayscale_Test {1,2,3}/      1,360 grayscale crops (3 tests x 5 illuminances)
   Results/                                  tables (T01-T20), figures (F01-F20), cache, RESULTS_SUMMARY.md, run_manifest.json
@@ -34,11 +34,32 @@ Supplementary_Code/
 
 ## Data
 
-* **Grayscale crops (classification):** `Dot-Blot Model ML CNN/Dataset/` — 480 + 440 + 440 = 1,360 PNG crops (46 sera, 272 spots, five illuminances: 250, 350, 470, 560, 850 lux). Included in the repository (about 14 MB).
-* **Segmentation images (YOLO):** 124 full-membrane photographs (3,840 × 2,160 px, about 25 MB each): 85 training and 39 validation images with 1,615 annotated spots (1,090 and 525). The polygon labels (`labels/`) and list files are in the repository; the **images are not** (about 3 GB, excluded by `.gitignore`) and must be placed in
-  `DotBlot YOLO Segmentation/dataset/train/images/Train/` and `.../dataset/validation/images/Validation/`.
-  Download: *[add Zenodo/Drive link or DOI here]*.
-* **Model weights:** `yolo_results/dotblot-yolov8n-seg/weights/best.pt` (manuscript model). The 60 cross-validation CNN checkpoints (`Results/models/`, about 0.9 GB) are not tracked; the notebook re-creates them.
+Everything needed to reproduce the study is in this repository (no data are available only on request). Large binary files are handled as follows:
+
+| Content | Location | Size | How it is stored |
+|---|---|---|---|
+| Grayscale crops (classification) | `Dot_Blot_Model_ML_CNN/Dataset/Grayscale_Test {1,2,3}/` — 480 + 440 + 440 = 1,360 PNG crops (46 de-identified sera, 272 spots, five illuminances: 250, 350, 470, 560, 850 lux) | about 16 MB | regular git |
+| Sample index / QC / features | `Dot_Blot_Model_ML_CNN/Results/tables/T01_image_index.csv`, `T03_qc_flags.csv`, `T04_features_raw.csv` (anonymised sample codes only) | small | regular git |
+| Segmentation images (YOLO) | `Dot_Blot_YOLO_Segmentation/dataset/{train,validation}/images/` — 124 full-membrane photographs (3,840 × 2,160 px, about 25 MB each): 85 training and 39 validation images with 1,615 annotated spots (1,090 and 525); polygon labels in `labels/`; extra example photographs in `dataset/test/` | about 3 GB | regular git (PNG) |
+| YOLO weights | `Dot_Blot_YOLO_Segmentation/yolo_results/dotblot-yolov8n-seg/weights/{best,last}.pt` (manuscript model) and `Toxoplasmosis_Diagnosis_Device/model/best.pt` (weights of the device) | few MB | **Git LFS** |
+| CNN checkpoints | `Dot_Blot_Model_ML_CNN/Results/models/*.pt` (60 cross-validation checkpoints) and `Results/cache/*.pkl` | about 0.9 GB | **Git LFS** |
+| Enclosure models | `Body_Case/*.skp` | small | **Git LFS** |
+
+### Git LFS
+
+`*.pt`, `*.pkl`, `*.skp` and `*.zip` are stored with [Git LFS](https://git-lfs.com). Without it you receive 130-byte pointer files instead of weights and checkpoints. Install it once and clone:
+
+```bash
+git lfs install
+git clone https://github.com/doditsuprianto/Smart-POCT-Dot-Blot-Reader-for-Toxoplasmosis-AI-Enabled-Detection-of-Anti-GRA7-Antibodies.git
+# already cloned without LFS?  ->  git lfs pull
+```
+
+The full clone is large (several GB, mostly the 124 membrane photographs). To fetch only the code, notebooks and the 1,360 crops, use a sparse checkout (`git sparse-checkout set Dot_Blot_Model_ML_CNN Supplementary_Code Toxoplasmosis_Diagnosis_Device`). The notebooks and the application re-create everything else.
+
+### Ethics and de-identification
+
+Sera were de-identified before imaging; file names and tables use anonymised sample codes (e.g. `S09`) and contain, besides the images, only the reference serology used as labels (CLIA status, IgM and IgG values); no names, identifiers, dates or other personal or clinical data are included. Patient-related output of the application (`Toxoplasmosis_Diagnosis_Device/output/`, including PDF reports) is excluded by `.gitignore` and must never be committed.
 
 ## Quick start
 
@@ -54,7 +75,7 @@ The notebooks also run unchanged in Google Colab (they install missing packages 
 
 ### 1. Segmentation (YOLOv8n-seg)
 
-Open `DotBlot YOLO Segmentation/Segmentation_Dotblot_YOLOv8_Audited.ipynb` from inside that folder (or set `DOTBLOT_YOLO_ROOT` to it). Paths are resolved automatically; nothing has to be edited.
+Open `Dot_Blot_YOLO_Segmentation/Segmentation_Dotblot_YOLOv8_Audited.ipynb` from inside that folder (or set `DOTBLOT_YOLO_ROOT` to it). Paths are resolved automatically; nothing has to be edited.
 
 | Environment variable | Default | Meaning |
 |---|---|---|
@@ -68,7 +89,7 @@ Training (50 epochs, 1,920 px, batch 4) needs a GPU. The dataset folders are rea
 
 ### 2. Classification (ML and CNN)
 
-Open `Dot-Blot Model ML CNN/Dot-Blot Model.ipynb` from inside that folder.
+Open `Dot_Blot_Model_ML_CNN/Dot-Blot Model.ipynb` from inside that folder.
 
 | Environment variable | Default | Meaning |
 |---|---|---|
@@ -81,7 +102,7 @@ The `FULL` run (5 CNN architectures × 2 protocols × 5 folds, nested tuning, bo
 
 ### 3. Supplementary scripts
 
-Run from `Supplementary_Code/` after the classification results exist in `Dot-Blot Model ML CNN/Results/`. Outputs go to `Supplementary_Code/output/` (`DOTBLOT_RESULTS` and `DOTBLOT_SUPP_OUT` override the locations).
+Run from `Supplementary_Code/` after the classification results exist in `Dot_Blot_Model_ML_CNN/Results/`. Outputs go to `Supplementary_Code/output/` (`DOTBLOT_RESULTS` and `DOTBLOT_SUPP_OUT` override the locations).
 
 | Script | Purpose | Output |
 |---|---|---|
@@ -126,5 +147,8 @@ Affiliation:
 
 ## License and citation
 
-*[License to be chosen by the authors, e.g. MIT for code and CC BY 4.0 for data and figures.]*
-*[Citation / DOI of the published manuscript to be added.]*
+**License:** to be chosen by the authors before publication (e.g. MIT for code, CC BY 4.0 for data and figures); add a `LICENSE` file. Until then all rights are reserved.
+
+**Citation:** the reference and DOI of the manuscript, and the Zenodo DOI of the archived release, will be added here.
+
+**Disclaimer.** Research prototype. It is not a validated medical device and must not be used for clinical decisions.

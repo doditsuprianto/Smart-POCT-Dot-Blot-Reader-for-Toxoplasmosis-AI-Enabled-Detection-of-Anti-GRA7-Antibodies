@@ -11,7 +11,7 @@ import os
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
 # Folder with the published ML/CNN results (tables/, cache/). Override with the environment variable DOTBLOT_RESULTS.
-RESULTS = Path(os.environ.get('DOTBLOT_RESULTS', HERE.parent/'Dot-Blot Model ML CNN'/'Results'))
+RESULTS = Path(os.environ.get('DOTBLOT_RESULTS', HERE.parent/'Dot_Blot_Model_ML_CNN'/'Results'))
 # All outputs of these scripts are written here (never into Results/). Override with DOTBLOT_SUPP_OUT.
 OUT = Path(os.environ.get('DOTBLOT_SUPP_OUT', HERE/'output')); OUT.mkdir(parents=True, exist_ok=True)
 import pandas as pd, numpy as np, json, warnings; warnings.filterwarnings('ignore')
